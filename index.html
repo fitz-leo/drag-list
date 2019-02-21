@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body,ul,li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #e5e5e5;
+            padding: 20px 15px;
+        }
+        main {
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        .list-wrapper {
+            overflow: hidden;
+        }
+        .list-wrapper .list-item {
+            box-sizing: border-box;
+            min-height: 50px;
+            width: 100%;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            color: #333;
+            position: relative;
+        }
+        .list-wrapper .list-item.active {
+            background-color: rgba(33, 150, 243, .8);
+            border: none;
+            color: #fff;
+            position: relative;
+            z-index: 99;
+            box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+        }
+        .list-wrapper .list-item.disa .serial {
+            background-color: #e5e5e5;
+        }
+        .list-wrapper .list-item.active .right .menu em {
+            background-color: #fff;
+        }
+        .list-wrapper .list-item.active .right .menu::after {
+            background-color: #fff;
+        }
+        .list-wrapper .list-item.active .right .menu::before {
+            background-color: #fff;
+        }
+        .list-wrapper .list-item .serial {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #0091ea;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: .15s linear;
+        }
+        .list-wrapper .list-item .right {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .list-wrapper .list-item .right .menu {
+            width: 20px;
+            height: 15px;
+        }
+        .list-wrapper .list-item .right .menu em {
+            display: inline-block;
+            top: 50%;
+            margin-top: -1px;
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ccc;
+            /* transition: all .3s ease;
+            transition-delay: .1s; */
+        }
+        .list-wrapper .list-item .right .menu::before {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ccc;
+            /* transition: all .3s ease;
+            transition-delay: .1s; */
+        }
+        .list-wrapper .list-item .right .menu::after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            background-color: #ccc;
+            /* transition: all .3s ease;
+            transition-delay: .1s; */
+        }
+        .desc {
+            /* background-color: #fff; */
+            padding: 20px 15px;
+        }
+        .flex {
+            display: flex;
+        }
+        .flex.flex-column {
+            flex-direction: column;
+        }
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+        .btn-full {
+            display: flex;
+            width: 100%;
+            background-color: #0091ea;
+            padding: 15px 0;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class='desc'>
+            <h3>移动端列表排序</h3>
+            <p>完成：</p>
+            <ul>
+                <li>1. 支持排序功能</li>
+                <li>2. 支持高亮当前选项</li>
+                <li>3. 排序时有过渡动画</li>
+            </ul>
+        </section>
+        <ul class="list-wrapper" id="list-content">
+    
+        </ul>
+    </main>
+    <div class="btn btn-full" style="margin-top: 30px;">Submit</div>
+    <script src="./index.js"></script>
+    <script>
+        let listArr = [
+            {
+                content: '选项A',
+            },
+            {
+                content: '选项B',
+            },
+            {
+                content: '选项C',
+            },
+            {
+                content: '选项D',
+            },
+        ]
+        let droplist = new DropList(document.getElementById('list-content'), {
+            showSort: true
+        })
+        droplist.createListItemEle(listArr)
+    </script>
+</body>
+</html>
